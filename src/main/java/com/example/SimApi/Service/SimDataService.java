@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SimDataService {
@@ -61,7 +62,7 @@ public class SimDataService {
         Calendar date=Calendar.getInstance();
         date.add(Calendar.DAY_OF_MONTH,30);
         return listAll().stream().filter(simCard -> simCard.getExpiryDate()!=null&&
-                date.toInstant().isAfter(simCard.getExpiryDate().toInstant())).toList();
+                date.toInstant().isAfter(simCard.getExpiryDate().toInstant())).collect(Collectors.toList());
     }
 
 //    public void renew(Long id) throws JsonProcessingException {
